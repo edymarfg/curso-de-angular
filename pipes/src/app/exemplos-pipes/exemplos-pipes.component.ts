@@ -15,6 +15,20 @@ export class ExemplosPipesComponent implements OnInit {
     url: 'https://acesse.one/iTAsG',
   };
 
+  livros: string[] = [
+    'O Senhor dos Anéis',
+    '1984',
+    'Vinte mil léguas submarinas',
+  ];
+
+  filtro!: string;
+
+  addCurso(valor: string) {
+    console.log('PASSOU', valor, this.livros);
+
+    this.livros.push(valor);
+  }
+
   constructor() {}
 
   ngOnInit(): void {}
