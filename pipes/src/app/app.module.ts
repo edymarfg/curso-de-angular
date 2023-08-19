@@ -8,6 +8,7 @@ import '@angular/common/locales/global/pt';
 import { SettingsService } from './settings.service';
 import { FilterArrayPipe } from './filter-array.pipe';
 import { FormsModule } from '@angular/forms';
+import { FiltroArrayImpuroPipe } from './filtro-array-impuro.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     ExemplosPipesComponent,
     CamelCasePipe,
     FilterArrayPipe,
+    FiltroArrayImpuroPipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [
