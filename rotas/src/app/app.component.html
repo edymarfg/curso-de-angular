@@ -20,7 +20,11 @@
           >
         </li>
         <li class="nav-item">
-          <a routerLinkActive="active" routerLink="/cursos" class="nav-link"
+          <a
+            routerLinkActive="active"
+            routerLink="/cursos"
+            [queryParams]="{ pagina: 1 }"
+            class="nav-link"
             >Cursos</a
           >
         </li>

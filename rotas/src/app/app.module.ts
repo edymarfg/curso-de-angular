@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 import { CursosComponent } from './cursos/cursos.component';
+import { CursosService } from './cursos/service/cursos.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
+import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-encontrado.component';
 
 @NgModule({
   declarations: [
@@ -14,13 +16,11 @@ import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
     CursosComponent,
     HomeComponent,
     LoginComponent,
-    CursoDetalheComponent
+    CursoDetalheComponent,
+    CursoNaoEncontradoComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [CursosService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
