@@ -1,0 +1,44 @@
+<h5>Criar/editar aluno</h5>
+
+<div>
+  <div class="mb-3">
+    <fieldset disabled>
+      <div class="mb-3">
+        <label for="id" class="form-label">#</label>
+        <input
+          [(ngModel)]="aluno.id"
+          type="text"
+          id="id"
+          class="form-control"
+          placeholder="Disabled input"
+        />
+      </div>
+    </fieldset>
+
+    <div class="mb-3">
+      <label for="nome" class="form-label"></label>
+      <input
+        [(ngModel)]="aluno.nome"
+        type="text"
+        class="form-control"
+        id="nome"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        [(ngModel)]="aluno.email"
+        type="email"
+        class="form-control"
+        id="email"
+        aria-describedby="emailHelp"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+  </div>
+</div>

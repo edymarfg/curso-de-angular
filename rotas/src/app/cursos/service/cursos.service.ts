@@ -13,9 +13,9 @@ export class CursosService {
 
   getCurso(id: number) {
     let cursos = this.getCursos();
-    for (const element of cursos) {
-      if (element.id == id) {
-        return element;
+    for (const curso of cursos) {
+      if (curso.id == id) {
+        return curso;
       }
     }
     return null;
