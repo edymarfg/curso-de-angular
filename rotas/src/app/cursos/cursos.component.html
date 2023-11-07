@@ -4,12 +4,10 @@
   <a
     class="list-group-item"
     *ngFor="let curso of cursos"
-    [routerLink]="['/curso', curso.id]"
+    [routerLink]="['/cursos', curso.id]"
     >{{ curso.nome }}</a
   >
 </div>
-<button
-  type="button"
-  class="btn btn-primary"
-  (click)="proximaPagina()"
-></button>
+<button type="button" class="btn btn-primary mt-2" (click)="proximaPagina()">
+  Próxima página
+</button>

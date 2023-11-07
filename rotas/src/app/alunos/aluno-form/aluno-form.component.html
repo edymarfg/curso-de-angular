@@ -16,12 +16,13 @@
     </fieldset>
 
     <div class="mb-3">
-      <label for="nome" class="form-label"></label>
+      <label for="nome" class="form-label">Nome</label>
       <input
         [(ngModel)]="aluno.nome"
         type="text"
         class="form-control"
         id="nome"
+        (input)="onInput()"
       />
     </div>
 
