@@ -17,6 +17,8 @@ export class AlunosGuard implements CanActivateChild {
   ): boolean | Observable<boolean> {
     // console.log(childRoute);
     // console.log(state);
+    console.log('ALUNOS GUARD');
+
     if (state.url.includes('editar')) {
       // alert('Usuário sem acesso');
       // return false;
