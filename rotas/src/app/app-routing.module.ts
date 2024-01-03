@@ -23,14 +23,23 @@ const routes: Routes = [
     //canActivateChild: [AlunosGuard],
     canLoad: [AuthGuard],
   },
+  {
+    path: 'forms',
+    loadChildren: () =>
+      import('./formularios/formularios.module').then(
+        (m) => m.FormulariosModule
+      ),
+    canActivate: [AuthGuard],
+  },
   { path: 'login', component: LoginComponent },
+
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/forms', pathMatch: 'full' },
   { path: '**', component: PaginaNaoEncontradaComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

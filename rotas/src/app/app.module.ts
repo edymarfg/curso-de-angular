@@ -13,7 +13,12 @@ import { AlunosGuard } from './guards/alunos.guard';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, LoginComponent, PaginaNaoEncontradaComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent,
+    PaginaNaoEncontradaComponent,
+  ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [AuthService, AuthGuard, CursosGuard, AlunosGuard],
   bootstrap: [AppComponent],
