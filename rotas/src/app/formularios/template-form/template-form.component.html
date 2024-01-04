@@ -7,7 +7,8 @@
       name="nome"
       id="nome"
       placeholder="Nome"
-      ngModel
+      [ngModel]="usuario.nome"
+      required
     />
   </div>
 
@@ -19,7 +20,9 @@
       name="email"
       id="email"
       placeholder="Email"
-      ngModel
+      [ngModel]="usuario.email"
+      required
+      [email]="true"
     />
   </div>
 
