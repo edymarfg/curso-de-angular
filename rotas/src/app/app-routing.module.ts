@@ -29,12 +29,12 @@ const routes: Routes = [
       import('./formularios/formularios.module').then(
         (m) => m.FormulariosModule
       ),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },
 
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/forms', pathMatch: 'full' },
+  { path: '', redirectTo: '/forms/dataForm', pathMatch: 'full' },
   { path: '**', component: PaginaNaoEncontradaComponent },
 ];
 
