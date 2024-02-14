@@ -7,7 +7,10 @@ import {
   NgModel,
   Validators,
 } from '@angular/forms';
-import { map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
+import { DropdownService } from '../shared/services/dropdown.service';
+import { EstadoBr } from '../shared/models/estado-br';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -16,13 +19,24 @@ import { map } from 'rxjs';
 })
 export class DataFormComponent implements OnInit {
   form!: FormGroup;
+  // estados: EstadoBr[] = [];
+  estados: Observable<EstadoBr[]> = of([]);
+  cargos: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private dropDownService: DropdownService,
+    private cepService: ConsultaCepService
   ) {}
 
   ngOnInit(): void {
+    this.estados = this.dropDownService.getEstadosBr();
+    this.cargos = this.dropDownService.getCargos();
+    // this.dropDownService.getEstadosBr().subscribe((dados) => {
+    //   this.estados = dados;
+    //   console.log(dados);
+    // });
     // this.form = new FormGroup({
     //   nome: new FormControl(null),
     //   email: new FormControl(null),
@@ -50,6 +64,8 @@ export class DataFormComponent implements OnInit {
         cidade: [null, Validators.required],
         estado: [null, Validators.required],
       }),
+
+      cargo: [null],
     });
 
     // Validators.pattern(
@@ -65,18 +81,34 @@ export class DataFormComponent implements OnInit {
   onSubmit() {
     console.log(this.form.value);
 
-    this.httpClient
-      .post('https://httpbin.org/post', JSON.stringify(this.form.value))
-      .pipe(map((res) => res))
-      .subscribe(
-        (dados) => {
-          console.log(dados);
-          //reseta o form
-          // this.form.reset();
-          // this.resetar();
-        },
-        (error) => alert('erro')
-      );
+    if (this.form.valid) {
+      this.httpClient
+        .post('https://httpbin.org/post', JSON.stringify(this.form.value))
+        .pipe(map((res) => res))
+        .subscribe(
+          (dados) => {
+            console.log(dados);
+            //reseta o form
+            // this.form.reset();
+            // this.resetar();
+          },
+          (error) => alert('erro')
+        );
+    } else {
+      console.log('formulario inválido');
+      this.verificaValidacoesForm(this.form);
+    }
+  }
+
+  verificaValidacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((campo) => {
+      console.log(campo);
+      const controle = formGroup.get(campo);
+      controle?.markAsDirty();
+      if (controle instanceof FormGroup) {
+        this.verificaValidacoesForm(controle);
+      }
+    });
   }
 
   resetar() {
@@ -96,7 +128,9 @@ export class DataFormComponent implements OnInit {
         false
     );
     return (
-      (this.form.get(campo)?.invalid && this.form.get(campo)?.touched) ?? false
+      (this.form.get(campo)?.invalid &&
+        (this.form.get(campo)?.touched || this.form.get(campo)?.dirty)) ??
+      false
     );
   }
 
@@ -118,19 +152,11 @@ export class DataFormComponent implements OnInit {
 
   consultaCEP() {
     let cep = this.form.get('endereco.cep')?.value;
-    console.log(cep);
-    cep = cep.replace(/\D/g, '');
-    if (cep != '') {
-      var validacep = /^[0-9]{8}$/;
-
-      if (validacep.test(cep)) {
+    if (cep != null && cep !== '') {
+      this.cepService.consultaCep(cep).subscribe((dados) => {
         this.resetaDadosForm();
-
-        this.httpClient
-          .get(`https://viacep.com.br/ws/${cep}/json`)
-          // .pipe(map((dados: any) => dados.json()))
-          .subscribe((dados) => this.populaDadosForm(dados));
-      }
+        this.populaDadosForm(dados);
+      });
     }
   }
 
@@ -161,5 +187,16 @@ export class DataFormComponent implements OnInit {
         estado: null,
       },
     });
+  }
+
+  setarCargo() {
+    const cargo = { nome: 'Dev', nivel: 'Pleno', desc: 'Dev Pl' };
+    this.form.get('cargo')?.setValue(cargo);
+  }
+
+  compararCargos(obj1: any, obj2: any) {
+    return obj1 && obj2
+      ? obj1.nome === obj2.nome && obj1.nivel === obj2.nivel
+      : obj1 === obj2;
   }
 }
