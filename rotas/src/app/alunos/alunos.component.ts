@@ -2,9 +2,10 @@ import { AlunosService } from './alunos.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-alunos',
-  templateUrl: './alunos.component.html',
-  styleUrls: ['./alunos.component.scss'],
+    selector: 'app-alunos',
+    templateUrl: './alunos.component.html',
+    styleUrls: ['./alunos.component.scss'],
+    standalone: false
 })
 export class AlunosComponent implements OnInit {
   alunos: any[] = [];

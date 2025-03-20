@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: 'p[fundoAmarelo]',
+    selector: 'p[fundoAmarelo]',
+    standalone: false
 })
 export class FundoAmareloDirective {
   constructor(private _elementRef: ElementRef, private _renderer2: Renderer2) {

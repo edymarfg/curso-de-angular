@@ -4,9 +4,10 @@ import { Subscription } from 'rxjs';
 import { CursosService } from '../service/cursos.service';
 
 @Component({
-  selector: 'app-curso-detalhe',
-  templateUrl: './curso-detalhe.component.html',
-  styleUrls: ['./curso-detalhe.component.scss'],
+    selector: 'app-curso-detalhe',
+    templateUrl: './curso-detalhe.component.html',
+    styleUrls: ['./curso-detalhe.component.scss'],
+    standalone: false
 })
 export class CursoDetalheComponent implements OnInit {
   id!: number;

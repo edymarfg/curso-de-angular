@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-curso-nao-encontrado',
-  templateUrl: './curso-nao-encontrado.component.html',
-  styleUrls: ['./curso-nao-encontrado.component.scss']
+    selector: 'app-curso-nao-encontrado',
+    templateUrl: './curso-nao-encontrado.component.html',
+    styleUrls: ['./curso-nao-encontrado.component.scss'],
+    standalone: false
 })
 export class CursoNaoEncontradoComponent implements OnInit {
 

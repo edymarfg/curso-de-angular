@@ -4,9 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { CursosService } from './service/cursos.service';
 
 @Component({
-  selector: 'app-cursos',
-  templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.scss'],
+    selector: 'app-cursos',
+    templateUrl: './cursos.component.html',
+    styleUrls: ['./cursos.component.scss'],
+    standalone: false
 })
 export class CursosComponent implements OnInit {
   cursos!: any[];

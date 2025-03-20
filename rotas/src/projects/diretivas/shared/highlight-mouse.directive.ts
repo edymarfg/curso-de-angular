@@ -7,7 +7,8 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[highlightMouse]',
+    selector: '[highlightMouse]',
+    standalone: false
 })
 export class HighlightMouseDirective {
   @HostListener('mouseenter') onMouseOver() {

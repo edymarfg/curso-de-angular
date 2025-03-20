@@ -6,9 +6,10 @@ import { IFormCanDeactivate } from 'src/app/guards/iform-candeactivate';
 import { Aluno } from '../aluno';
 
 @Component({
-  selector: 'app-aluno-form',
-  templateUrl: './aluno-form.component.html',
-  styleUrls: ['./aluno-form.component.scss'],
+    selector: 'app-aluno-form',
+    templateUrl: './aluno-form.component.html',
+    styleUrls: ['./aluno-form.component.scss'],
+    standalone: false
 })
 export class AlunoFormComponent
   implements OnInit, OnDestroy, IFormCanDeactivate

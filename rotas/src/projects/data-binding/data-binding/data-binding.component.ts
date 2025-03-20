@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-data-binding',
-  templateUrl: './data-binding.component.html',
-  //styleUrls: ['./data-binding.component.scss'],
-  styles: [
-    `
+    selector: 'app-data-binding',
+    templateUrl: './data-binding.component.html',
+    //styleUrls: ['./data-binding.component.scss'],
+    styles: [
+        `
       .highlight {
         background-color: yellow;
         font-weight: bold;
       }
     `,
-  ],
+    ],
+    standalone: false
 })
 export class DataBindingComponent implements OnInit {
   url: string = 'http://loiane.com';

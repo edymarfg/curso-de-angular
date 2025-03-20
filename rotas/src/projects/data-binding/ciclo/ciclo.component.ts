@@ -12,9 +12,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'app-ciclo',
-  templateUrl: './ciclo.component.html',
-  styleUrls: ['./ciclo.component.scss'],
+    selector: 'app-ciclo',
+    templateUrl: './ciclo.component.html',
+    styleUrls: ['./ciclo.component.scss'],
+    standalone: false
 })
 export class CicloComponent
   implements

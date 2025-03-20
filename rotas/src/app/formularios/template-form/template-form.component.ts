@@ -5,9 +5,10 @@ import { map } from 'rxjs';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
-  selector: 'app-template-form',
-  templateUrl: './template-form.component.html',
-  styleUrls: ['./template-form.component.scss'],
+    selector: 'app-template-form',
+    templateUrl: './template-form.component.html',
+    styleUrls: ['./template-form.component.scss'],
+    standalone: false
 })
 export class TemplateFormComponent implements OnInit {
   usuario: any = { nome: null, email: null };

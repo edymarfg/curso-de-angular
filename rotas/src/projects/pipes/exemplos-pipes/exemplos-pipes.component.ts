@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, interval, map } from 'rxjs';
 
 @Component({
-  selector: 'app-exemplos-pipes',
-  templateUrl: './exemplos-pipes.component.html',
-  styleUrls: ['./exemplos-pipes.component.scss'],
+    selector: 'app-exemplos-pipes',
+    templateUrl: './exemplos-pipes.component.html',
+    styleUrls: ['./exemplos-pipes.component.scss'],
+    standalone: false
 })
 export class ExemplosPipesComponent implements OnInit {
   livro: any = {

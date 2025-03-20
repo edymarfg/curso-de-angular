@@ -9,9 +9,10 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'contador',
-  templateUrl: './output-property.component.html',
-  styleUrls: ['./output-property.component.scss'],
+    selector: 'contador',
+    templateUrl: './output-property.component.html',
+    styleUrls: ['./output-property.component.scss'],
+    standalone: false
 })
 export class OutputPropertyComponent implements OnInit {
   @Input() valor: number = 0;

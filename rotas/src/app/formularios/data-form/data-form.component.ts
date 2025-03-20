@@ -16,6 +16,7 @@ import { ConsultaCepService } from '../shared/services/consulta-cep.service';
   selector: 'app-data-form',
   templateUrl: './data-form.component.html',
   styleUrls: ['./data-form.component.scss'],
+  standalone: false,
 })
 export class DataFormComponent implements OnInit {
   form!: FormGroup;
@@ -122,11 +123,6 @@ export class DataFormComponent implements OnInit {
   }
 
   verificaValidTouched(campo: string): boolean {
-    this.logif(
-      campo === 'nome',
-      '' + (this.form.get(campo)?.invalid && this.form.get(campo)?.touched) ??
-        false
-    );
     return (
       (this.form.get(campo)?.invalid &&
         (this.form.get(campo)?.touched || this.form.get(campo)?.dirty)) ??
@@ -153,7 +149,7 @@ export class DataFormComponent implements OnInit {
   consultaCEP() {
     let cep = this.form.get('endereco.cep')?.value;
     if (cep != null && cep !== '') {
-      this.cepService.consultaCep(cep).subscribe((dados) => {
+      this.cepService.consultaCep(cep).subscribe((dados: any) => {
         this.resetaDadosForm();
         this.populaDadosForm(dados);
       });

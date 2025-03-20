@@ -5,9 +5,10 @@ import { AlunosService } from '../alunos.service';
 import { Aluno } from '../aluno';
 
 @Component({
-  selector: 'app-aluno-detalhe',
-  templateUrl: './aluno-detalhe.component.html',
-  styleUrls: ['./aluno-detalhe.component.scss'],
+    selector: 'app-aluno-detalhe',
+    templateUrl: './aluno-detalhe.component.html',
+    styleUrls: ['./aluno-detalhe.component.scss'],
+    standalone: false
 })
 export class AlunoDetalheComponent implements OnInit, OnDestroy {
   aluno!: Aluno;
